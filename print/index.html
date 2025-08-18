@@ -102,6 +102,7 @@
       padding: 10px;
       text-transform: uppercase;
       box-sizing: border-box;
+      overflow: hidden; /* Garante que a imagem não ultrapasse a área */
     }
 
     .file-input input[type="file"] {
@@ -142,6 +143,13 @@
       background-color: #009900;
     }
 
+    .file-input img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Faz a imagem preencher o quadrado sem distorcer */
+      border-radius: 8px;
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 15px;
@@ -176,12 +184,13 @@
     <div class="form-container">
       <div class="file-input">
         <!-- Removido o 'capture="camera"' para permitir a escolha de arquivos do dispositivo -->
-        <input id="file-upload" type="file" accept="image/*" onchange="enableSubmitButton()">
+        <input id="file-upload" type="file" accept="image/*" onchange="previewImage(event)">
         <label for="file-upload">
           <span class="camera-icon">📷</span>
-          Clique aqui para enviar um print do saldo da banca
+          Clique aqui para escolher uma foto
         </label>
       </div>
+
       <button id="submit-btn" class="button" onclick="submitForm()">Enviar</button>
     </div>
   </div>
@@ -197,6 +206,23 @@
       } else {
         submitButton.style.opacity = 0.5; // Mantém o botão desabilitado
         submitButton.style.pointerEvents = 'none'; // Desabilita o botão
+      }
+    }
+
+    // Função para mostrar a imagem selecionada dentro da área de upload
+    function previewImage(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function() {
+        const fileInputLabel = fileInput.parentElement.querySelector('label');
+        fileInputLabel.innerHTML = `<img src="${reader.result}" alt="Imagem Selecionada">`; // Exibe a imagem no espaço de upload
+        enableSubmitButton(); // Habilita o botão "Enviar"
+      };
+      
+      if (file) {
+        reader.readAsDataURL(file);
       }
     }
 
