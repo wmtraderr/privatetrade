@@ -14,7 +14,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Garante que o conteúdo ocupe a altura inteira da tela */
+      flex-direction: column;
     }
 
     .container {
@@ -32,7 +33,7 @@
       font-size: 8vw; /* Ajuste responsivo */
       margin-bottom: 10px;
       color: gold;
-      margin-top: 20px;
+      margin-top: 0;
     }
 
     h2 {
