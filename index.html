@@ -1,155 +1,152 @@
-<!DOCTYPE html> 
-<html lang="pt-br"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Private Trade</title> 
-  <style> 
-    body { 
-      font-family: Arial, sans-serif; 
-      background-color: #0e1d2d; 
-      color: #fff; 
-      margin: 0; 
-      padding: 0; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      height: 100vh; 
-    } 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Trade</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0e1d2d;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-    .container { 
-      width: 100%; 
-      max-width: 600px; 
-      padding: 20px; 
-      background: #0a1321; 
-      border-radius: 10px; 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); 
-    } 
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background: #0a1321;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      box-sizing: border-box;
+    }
 
-    h1 { 
-      text-align: center; 
-      font-size: 40px; 
-      margin-bottom: 10px; 
-      color: gold;
-    } 
-
-    h2 { 
-      text-align: center; 
-      font-size: 30px; 
+    h1 {
+      text-align: center;
+      font-size: 8vw; /* Ajuste responsivo */
       margin-bottom: 10px;
-      color: #7cff7c 
-    } 
+      color: gold;
+      margin-top: 20px;
+    }
 
-    h3 { 
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
-      text-align: left; 
-      font-size: 16px; 
-      margin-bottom: 10px; 
-    } 
+    h2 {
+      text-align: center;
+      font-size: 6vw; /* Ajuste responsivo */
+      margin-bottom: 10px;
+      color: #7cff7c;
+    }
 
-    .button { 
-      width: 100%; 
-      padding: 15px; 
-      background: #00ff00; 
-      border: none; 
-      font-size: 18px; 
-      font-weight: bold; 
-      color: #0a1321; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      transition: 0.3s ease; 
-      margin-top: 20px; 
-    } 
+    h3 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      text-align: left;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
 
-    .button:hover { 
-      background-color: #00cc00; 
-    } 
+    .button {
+      width: 100%;
+      padding: 15px;
+      background: #00ff00;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0a1321;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+    }
 
-    .status { 
-      text-align: center; 
-      font-size: 18px; 
-      font-weight: bold; 
-      margin: 20px 0; 
-    } 
+    .button:hover {
+      background-color: #00cc00;
+    }
 
-    .status span { 
-      color: #00ff00; 
-    } 
+    .status {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
 
-    .form-container { 
-      margin-bottom: 20px; 
-      display: flex; 
-      flex-direction: column; 
-    } 
+    .status span {
+      color: #00ff00;
+    }
 
-    .form-container input[type="text"], 
-    .form-container select { 
-      padding: 12px; 
-      background-color: #1c2a3a; 
-      border: none; 
-      color: #fff; 
-      font-size: 16px; 
-      margin-bottom: 15px; 
-      border-radius: 8px; 
-    } 
+    .form-container {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
 
-    /* Estilo para o iframe com proporção 1:1 */ 
-    .video-container { 
-      position: relative; 
-      width: 100%; /* Agora usa toda a largura disponível */ 
-      padding-top: 100%; /* Proporção 1:1 (altura = largura) */ 
-      margin-bottom: 20px; 
-      background-color: #000; 
-      border-radius: 10px; 
-      overflow: hidden; 
-      margin-left: auto; /* Para centralizar */ 
-      margin-right: auto; /* Para centralizar */ 
-    } 
+    .form-container input[type="text"],
+    .form-container select {
+      padding: 12px;
+      background-color: #1c2a3a;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
 
-    .video-container iframe { 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-    } 
+    /* Estilo para o iframe com proporção 1:1 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* Proporção 1:1 (altura = largura) */
+      margin-bottom: 20px;
+      background-color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-    @media (max-width: 768px) { 
-      .container { 
-        padding: 15px; 
-      } 
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-      h1 { 
-        margin-top: 0px; 
-        font-size: 40px; 
-        color: gold; 
-      } 
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
 
-      h2 { 
-        margin-top: 10px; 
-        font-size: 30px; 
-        color: #7cff7c; 
-      } 
+      h1 {
+        font-size: 10vw; /* Ajuste do tamanho da fonte para telas menores */
+      }
 
-      .button { 
-        font-size: 16px; 
-      } 
-    } 
-  </style> 
-</head> 
-<body> 
-  <div class="container"> 
+      h2 {
+        font-size: 8vw; /* Ajuste do tamanho da fonte para telas menores */
+      }
+
+      .button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
     <h1>Private Trade</h1>
-    <h2>Sinais Inteligentes</h2> 
-    <div class="status"> 
-      <h3>Desenvolvido com a mais avançada tecnologia em inteligência artificial e utilizando o poder do ChatGPT-5, nossa plataforma proporciona previsões de alta precisão.<br><br> Elaborada por traders profissionais, alcançamos uma taxa de assertividade de 96%, garantindo resultados consistentes e confiáveis para análises detalhadas de mercado.</h3> 
-    </div> 
-    <!-- Adicionando o iframe para o vídeo com proporção 1:1 --> 
-    <div class="video-container"> 
-      <iframe src="https://www.youtube.com/embed/F5SwWkRGuhg?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen frameborder="0" style="width:100%; height:100%;" ></iframe> 
-    </div> 
+    <h2>Sinais Inteligentes</h2>
+    <div class="status">
+      <h3>Desenvolvido com a mais avançada tecnologia em inteligência artificial e utilizando o poder do ChatGPT-5, nossa plataforma proporciona previsões de alta precisão.<br><br> Elaborada por traders profissionais, alcançamos uma taxa de assertividade de 96%, garantindo resultados consistentes e confiáveis para análises detalhadas de mercado.</h3>
+    </div>
+    <!-- Adicionando o iframe para o vídeo com proporção 1:1 -->
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/F5SwWkRGuhg?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen frameborder="0" style="width:100%; height:100%;" ></iframe>
+    </div>
     <button class="button" onclick="window.location.href='/privatetrade/formulario'">QUERO ACESSO GRATUITO!</button>
-
-  </div> 
-</body> 
+  </div>
+</body>
 </html>
