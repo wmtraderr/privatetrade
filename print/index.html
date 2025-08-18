@@ -175,10 +175,11 @@
 
     <div class="form-container">
       <div class="file-input">
-        <input id="file-upload" type="file" accept="image/*" capture="camera" onchange="enableSubmitButton()">
+        <!-- Removido o 'capture="camera"' para permitir a escolha de arquivos do dispositivo -->
+        <input id="file-upload" type="file" accept="image/*" onchange="enableSubmitButton()">
         <label for="file-upload">
           <span class="camera-icon">📷</span>
-          Clique aqui para escolher ou tirar uma foto
+          Clique aqui para enviar um print do saldo da banca
         </label>
       </div>
       <button id="submit-btn" class="button" onclick="submitForm()">Enviar</button>
