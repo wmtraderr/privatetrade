@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Trade</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0e1d2d;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background: #0a1321;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 5px; /* Reduzido o espaço entre título e subtítulo */
+      color: gold;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 10px; /* Reduzido o espaço entre subtítulo e "concluído" */
+      color: #7cff7c;
+    }
+
+    h3 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px; /* Reduzido o espaço entre as frases */
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      background: #00ff00;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      color: #0a1321;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #00cc00;
+    }
+
+    .countdown {
+      font-size: 24px;
+      font-weight: bold;
+      color: red; /* Contador em vermelho */
+      margin: 20px 0;
+    }
+
+    .form-container {
+      margin-top: 20px; /* Reduzido o espaço entre "concluído" e "criação de conta aprovada" */
+    }
+
+    .form-container h3 {
+      color: red; /* Criação de conta aprovada em vermelho */
+      margin-bottom: 10px; /* Menos espaçamento */
+    }
+
+    .whatsapp-button {
+      background-color: #34b7f1; /* Azul para WhatsApp */
+      color: white;
+      border: 2px solid black; /* Borda preta para destaque */
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para melhorar a visibilidade */
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #128c7e;
+      border-color: #0c6e55; /* Muda a borda na interação */
+    }
+
+    .gear-money-button {
+      background-color: #f1c40f; /* Cor dourada */
+      color: white;
+      border: 2px solid black; /* Borda preta para contraste */
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .gear-money-button {
+  background-color: #000000; /* Cor de fundo preta */
+  color: white; /* Cor do texto branca para contraste */
+  border: 2px solid black; /* Borda preta */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+  padding: 12px;
+  font-size: 14px;
+ }
+
+
+    .copy-container {
+      margin-top: 10px;
+    }
+
+    .copy-text {
+      background-color: #1c2a3a;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 8px;
+      text-align: left;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    .copy-btn {
+      padding: 8px;
+      background-color: #00cc00;
+      border: none;
+      color: white;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background-color: #009900;
+    }
+
+    /* Novo estilo para "SEU LOGIN É" */
+    .login-text {
+      background-color: #ff5722; /* Fundo laranja para destaque */
+      padding: 8px;
+      font-size: 16px;
+      color: black; /* Cor do texto dentro da caixa agora está preta */
+      font-weight: bold;
+      border-radius: 5px;
+      margin-bottom: 0px;
+      display: inline-block;
+      border: 2px solid black; /* Adicionando contorno preto para destaque */
+      margin-top: 10px;
+    }
+
+    /* Estilo do botão "Clique aqui para ter acesso à ferramenta Private Trade" */
+    .button-private-trade {
+      color: rgb(0, 0, 0); /* Texto preto */
+      background-color: transparent;
+      border: 2px solid white;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button-private-trade:hover {
+      background-color: rgb(0, 0, 0);
+      color: black;
+    }
+
+    /* Ajuste da distância entre "Se o login é" e o campo de texto */
+    .login-text + .copy-container {
+      margin-top: 0px; /* Remover o espaço entre o texto e o campo de cópia */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Private Trade</h1>
+    <h2>Gerando seu Login</h2>
+
+    <!-- Verificando informações -->
+    <h3 id="verifying">Verificando informações...</h3>
+    <div class="countdown" id="countdown">20</div>
+
+    <!-- Cronômetro e Conteúdo -->
+    <div class="form-container" id="form-container" style="display: none;">
+      <h3>Criação de conta aprovada</h3>
+      <button class="button whatsapp-button" onclick="window.location.href='https://chat.whatsapp.com/JZfkRLl7OyE9U2nm4DIwAT'">
+        <span>📱</span> Clique aqui para entrar no grupo do WhatsApp
+      </button>
+      <button class="button gear-money-button" onclick="window.location.href='https://privatetrade.app'">
+        <span>⚙️💰</span> Clique aqui para ter acesso à ferramenta Private Trade
+      </button>
+
+      <!-- Novo texto "SEU LOGIN É" com destaque -->
+      <div class="login-text">SEU LOGIN É:</div>
+
+      <!-- Campos com texto copiável -->
+      <div class="copy-container">
+        <textarea class="copy-text" id="text1" readonly>useprivatetrade@gmail.com</textarea>
+        <button class="copy-btn" onclick="copyText('text1')">Copiar</button>
+      </div>
+      <div class="copy-container">
+        <textarea class="copy-text" id="text2" readonly>MEMBROPRIVATE25</textarea>
+        <button class="copy-btn" onclick="copyText('text2')">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Função do cronômetro
+    let countdown = 20;
+    const countdownElement = document.getElementById('countdown');
+    const formContainer = document.getElementById('form-container');
+    const verifyingElement = document.getElementById('verifying');
+    
+    const countdownInterval = setInterval(function() {
+      countdownElement.innerText = countdown;
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerText = 'Concluído!';
+        verifyingElement.style.display = 'none'; // Remove "Verificando informações"
+        formContainer.style.display = 'block'; // Exibe o conteúdo após o cronômetro
+      }
+      countdown--;
+    }, 1000); // Decrementa a cada segundo
+
+    // Função para copiar o texto
+    function copyText(elementId) {
+      const copyText = document.getElementById(elementId);
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
+      document.execCommand("copy");
+      alert("Texto copiado: " + copyText.value);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Trade</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0e1d2d;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background: #0a1321;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: gold;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #7cff7c;
+    }
+
+    h3 {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      text-align: left;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      width: 100%;
+      padding: 15px;
+      background: #00ff00;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #0a1321;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-top: 20px;
+      opacity: 0.5; /* Inicialmente desabilitado */
+      pointer-events: none; /* Desabilitado */
+    }
+
+    .button:hover {
+      background-color: #00cc00;
+    }
+
+    .status {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .status span {
+      color: #00ff00;
+    }
+
+    .form-container {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .file-input {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background-color: #1c2a3a;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px;
+      text-transform: uppercase;
+      box-sizing: border-box;
+    }
+
+    .file-input input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .file-input:hover {
+      background-color: #333;
+    }
+
+    .file-input label {
+      display: flex;
+      align-items: center;
+    }
+
+    .file-input .camera-icon {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .file-input button {
+      padding: 10px;
+      background-color: #00cc00;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .file-input button:hover {
+      background-color: #009900;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        margin-top: 0px;
+        font-size: 40px;
+        color: gold;
+      }
+
+      h2 {
+        margin-top: 10px;
+        font-size: 30px;
+        color: #7cff7c;
+      }
+
+      .button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Private Trade</h1>
+    <h2>Envie sua Comprovação</h2>
+    <div class="status">
+      <h3>Envie um print ou foto do seu saldo bancário para comprovar que você realmente quer usar nossa ferramenta.</h3>
+    </div>
+
+    <div class="form-container">
+      <div class="file-input">
+        <input id="file-upload" type="file" accept="image/*" capture="camera" onchange="enableSubmitButton()">
+        <label for="file-upload">
+          <span class="camera-icon">📷</span>
+          Clique aqui para escolher ou tirar uma foto
+        </label>
+      </div>
+      <button id="submit-btn" class="button" onclick="submitForm()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    // Função para habilitar o botão "Enviar" quando a foto for escolhida
+    function enableSubmitButton() {
+      const fileInput = document.getElementById('file-upload');
+      const submitButton = document.getElementById('submit-btn');
+      if (fileInput.files.length > 0) {
+        submitButton.style.opacity = 1; // Torna o botão visível
+        submitButton.style.pointerEvents = 'auto'; // Habilita o botão
+      } else {
+        submitButton.style.opacity = 0.5; // Mantém o botão desabilitado
+        submitButton.style.pointerEvents = 'none'; // Desabilita o botão
+      }
+    }
+
+    // Função para redirecionar após o envio
+    function submitForm() {
+      window.location.href = '/privatetrade/login'; // Redireciona para a página de login
+    }
+  </script>
+</body>
+</html>

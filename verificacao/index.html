@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Trade - Verificação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e1d2d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: #0a1321;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container input[type="text"], .form-container select {
+            padding: 12px;
+            background-color: #1c2a3a;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .form-container label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .form-container p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: 20px;
+        }
+
+        /* Botão "Confirmar saldo" em verde */
+        .green-button {
+            background-color: #28a745; /* Verde */
+        }
+
+        .green-button:hover {
+            background-color: #218838; /* Verde mais escuro */
+        }
+
+        /* Botão "Clique aqui para depositar" em azul */
+        .blue-button {
+            background-color: #007bff; /* Azul */
+        }
+
+        .blue-button:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        #bancaContainer, #depositoContainer, #saldoInputContainer, #confirmacaoContainer, #confirmacaoResponsabilidade {
+            display: none;
+        }
+
+        #saldoPositivoLabel {
+            font-size: 24px;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .radio-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .exemplo-texto {
+            font-size: 18px;
+            color: #aaa;
+        }
+
+        .exemplo-input {
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        #confirmacaoResponsabilidade, #confirmacaoContainer {
+            margin-top: 20px;
+            font-size: 16px;
+            opacity: 0.8; /* Aplica 80% de opacidade */
+        }
+
+        .confirmation-checkbox {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                margin-top: 0px;
+                font-size: 40px;
+                color: gold;
+            }
+
+            h2 {
+                margin-top: 10px;
+                font-size: 30px;
+                color: #7cff7c;
+            }
+
+            .button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Private Trade</h1>
+        <h2>Criando sua conta na IA</h2>
+
+        <p>Para segurança e evitar spam, nós só criamos contas para traders que realmente têm o intuito de operar usando o nosso robô, com o nosso serviço de trade artificial.</p>
+        <p>Então, contas só são criadas quando a mesma tem saldo positivo.</p>
+
+        <!-- Pergunta: Você tem saldo na ponta? -->
+        <div class="form-container">
+            <label id="saldoPositivoLabel" for="saldoPositivo">Você tem saldo na ponta?</label>
+            <div>
+                <input type="radio" id="sim" name="saldoPositivo" value="sim" class="radio-label">
+                <label for="sim">Sim</label>
+                <input type="radio" id="nao" name="saldoPositivo" value="nao" class="radio-label">
+                <label for="nao">Não</label>
+            </div>
+        </div>
+
+        <!-- Se a pessoa escolher "Sim", abre a opção de quanto de banca -->
+        <div id="bancaContainer" class="form-container">
+            <label for="banca">Quanto de banca você está?</label>
+            <input type="text" id="banca" name="banca" placeholder="Exemplo: R$500,00" required>
+        </div>
+
+        <!-- Se a pessoa escolher "Não", abre a opção para clicar no link de depósito -->
+        <div id="depositoContainer" class="form-container">
+            <p style="color: red; font-weight: bold;">Para operar, você precisa ter saldo. Clique abaixo para fazer o depósito.</p>
+            <button type="button" class="button blue-button" onclick="window.open('https://lxgo.me/go?brand=loovitrade&bta=30006_0253', '_blank');">Clique aqui para depositar</button>
+        </div>
+
+        <!-- Após clicar em "Não", o campo para digitar o saldo aparece -->
+        <div id="saldoInputContainer" class="form-container">
+            <label for="saldoDepositado">Agora digite o saldo disponível após o depósito:</label>
+            <input type="text" id="saldoDepositado" name="saldoDepositado" placeholder="Exemplo: R$500,00" required>
+        </div>
+
+        <!-- Caixa de confirmação de responsabilidade e aceitação dos termos -->
+        <div id="confirmacaoResponsabilidade" class="form-container">
+            <input type="checkbox" id="confirmacaoResponsabilidadeCheck" name="confirmacaoResponsabilidadeCheck" class="confirmation-checkbox" required>
+            <label for="confirmacaoResponsabilidadeCheck">Declaro que as informações fornecidas são verdadeiras e assumo total responsabilidade caso estas não sejam corretas. Entendo que qualquer solicitação inconsistente será considerada como tentativa de spam, resultando na perda de acesso à ferramenta Private Trade.</label>
+        </div>
+
+        <!-- Caixa de confirmação -->
+        <div id="confirmacaoContainer" class="form-container">
+            <input type="checkbox" id="confirmacaoSaldo" name="confirmacaoSaldo" class="confirmation-checkbox" required>
+            <label for="confirmacaoSaldo">Declaro respostas verdadeiras, caso minha conta esteja zerada, eu vou perder acesso ao Private Trade.</label>
+        </div>
+
+        <!-- Botão de confirmação (verde agora) -->
+        <div class="form-container">
+            <button class="button green-button" onclick="window.location.assign('/privatetrade/print');">Confirmar saldo</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variáveis de exibição dos campos
+            const simRadio = document.getElementById('sim');
+            const naoRadio = document.getElementById('nao');
+            const bancaContainer = document.getElementById('bancaContainer');
+            const depositoContainer = document.getElementById('depositoContainer');
+            const saldoInputContainer = document.getElementById('saldoInputContainer');
+            const confirmacaoResponsabilidadeContainer = document.getElementById('confirmacaoResponsabilidade');
+
+            // Exibe ou esconde os campos com base na seleção de "Sim" ou "Não"
+            simRadio.addEventListener('change', function() {
+                if (simRadio.checked) {
+                    bancaContainer.style.display = 'block';
+                    depositoContainer.style.display = 'none';
+                    saldoInputContainer.style.display = 'none';
+                    confirmacaoResponsabilidadeContainer.style.display = 'block'; // Exibe a confirmação de responsabilidade
+                    // Aplica o formato R$ ao campo de entrada ao selecionar "Sim"
+                    const bancaInput = document.getElementById('banca');
+                    bancaInput.value = 'R$ ';
+                    bancaInput.addEventListener('input', function() {
+                        let value = this.value.replace(/\D/g, ''); // Remove tudo, exceto números
+                        value = value.replace(/(\d)(\d{2})$/, "$1,$2"); // Formata com vírgula para os dois últimos números
+                        value = value.replace(/(\d)(\d{3})(\d{3})$/, "$1.$2.$3"); // Formata com ponto para os milhares
+                        this.value = 'R$ ' + value;
+                    });
+                }
+            });
+
+            naoRadio.addEventListener('change', function() {
+                if (naoRadio.checked) {
+                    depositoContainer.style.display = 'block';
+                    bancaContainer.style.display = 'none';
+                    saldoInputContainer.style.display = 'block';
+                    confirmacaoResponsabilidadeContainer.style.display = 'block'; // Exibe a confirmação de responsabilidade
+                }
+            });
+
+            // Formatação do campo de saldo com R$ enquanto digita
+            const saldoDepositadoInput = document.getElementById('saldoDepositado');
+            saldoDepositadoInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, ''); // Remove tudo, exceto números
+                value = value.replace(/(\d)(\d{2})$/, "$1,$2"); // Formata com vírgula para os dois últimos números
+                value = value.replace(/(\d)(\d{3})(\d{3})$/, "$1.$2.$3"); // Formata com ponto para os milhares
+                this.value = 'R$ ' + value;
+            });
+        });
+    </script>
+</body>
+</html>

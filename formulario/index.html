@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Trade - Formulário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e1d2d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: #0a1321;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            background: #00ff00;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0a1321;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #00cc00;
+        }
+
+        .status {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .status span {
+            color: #00ff00;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container input[type="text"], .form-container select {
+            padding: 12px;
+            background-color: #1c2a3a;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .form-container label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .form-container select {
+            font-size: 16px;
+        }
+
+        .form-container p {
+            font-size: 18px; /* Tamanho aumentado */
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        #emailContainer, #criarContaContainer, #instructionsContainer {
+            display: none;
+        }
+
+        /* Estilo para o botão de criar conta com fundo azul */
+        .button-blue {
+            background-color: #007bff; /* Azul */
+        }
+
+        .button-blue:hover {
+            background-color: #0056b3; /* Azul mais escuro */
+        }
+
+        .error {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                margin-top: 0px;
+                font-size: 40px;
+                color: gold;
+            }
+
+            h2 {
+                margin-top: 10px;
+                font-size: 30px;
+                color: #7cff7c;
+            }
+
+            .button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Private Trade</h1><h2>Formulário de Cadastro</h2>
+
+        <div class="status">
+            <h3>Responda as perguntas abaixo para continuar com o nosso serviço de sinais inteligentes.</h3>
+        </div>
+
+        <!-- Formulário -->
+        <form class="form-container" id="form">
+            <!-- Pergunta 1 -->
+            <label for="operacao">1. Onde você opera?</label>
+            <select id="operacao" name="operacao" required>
+                <option value="">Selecione...</option>
+                <option value="BULLEX">BULLEX</option>
+                <option value="LOOVITRADE">LOOVITRADE</option>
+                <option value="IQ OPTION">IQ OPTION</option>
+                <option value="outra">OUTRA</option>
+            </select>
+
+            <!-- Texto explicativo -->
+            <p>Nossa ferramenta ainda não é universal. Ela foi criada para funcionar pela plataforma em que estamos operando atualmente, que é a LooviTrade.</p>
+
+            <!-- Pergunta 2 -->
+            <label for="temContaLove">2. Você tem conta na Loovi Trade?</label>
+            <select id="temContaLove" name="temContaLove" required>
+                <option value="">Selecione...</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+
+            <!-- Campo de e-mail para qualquer seleção -->
+            <div id="emailContainer">
+                <label for="email">Digite o seu e-mail da conta registrada na Loovi Trade:</label>
+                <input type="text" id="email" name="email" placeholder="Ex: exemplo@gmail.com" required>
+                <span id="emailError" class="error">Por favor, insira um e-mail válido.</span>
+            </div>
+
+            <!-- Opção de criar conta se a pessoa selecionar "Não" -->
+            <div id="criarContaContainer">
+                <button type="button" class="button button-blue" onclick="window.open('https://lxgo.me/go?brand=loovitrade&bta=30006_0253', '_blank')">Clique aqui para criar conta</button>
+            </div>
+
+            <!-- Instruções de como proceder -->
+            <div id="instructionsContainer">
+                <p>Clique no botão acima para criar a conta, retorne a esta página e digite o e-mail cadastrado, e depois clique em ENVIAR.</p>
+            </div>
+
+            <!-- Erro de validação -->
+            <span id="formError" class="error">Por favor, preencha todos os campos corretamente.</span>
+
+            <!-- Botão de envio redirecionando para a pasta 'verificacao' -->
+            <button type="submit" class="button">ENVIAR</button>
+        </form>
+
+    </div>
+
+    <script>
+        // Lógica para exibir os campos de e-mail ou link de criação de conta
+        const temContaLoveSelect = document.getElementById('temContaLove');
+        const emailContainer = document.getElementById('emailContainer');
+        const criarContaContainer = document.getElementById('criarContaContainer');
+        const instructionsContainer = document.getElementById('instructionsContainer');
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        const formError = document.getElementById('formError');
+        const submitButton = document.querySelector('.button[type="submit"]'); // Botão "ENVIAR"
+        const form = document.querySelector('#form');
+
+        temContaLoveSelect.addEventListener('change', function() {
+            emailContainer.style.display = 'block'; // Exibe o campo de e-mail independentemente de "Sim" ou "Não"
+            if (temContaLoveSelect.value === 'sim') {
+                criarContaContainer.style.display = 'none';
+                instructionsContainer.style.display = 'none';
+            } else if (temContaLoveSelect.value === 'nao') {
+                criarContaContainer.style.display = 'block';
+                instructionsContainer.style.display = 'block'; // Instruções são exibidas
+            }
+        });
+
+        // Função de validação para o formulário
+        function validateForm() {
+            let isValid = true;
+            const emailValue = emailInput.value;
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Verifica se todos os campos obrigatórios estão preenchidos
+            const operacaoValue = document.getElementById('operacao').value;
+            const temContaLoveValue = temContaLoveSelect.value;
+
+            if (!operacaoValue || !temContaLoveValue) {
+                isValid = false;
+            }
+
+            // Validação do e-mail
+            if (!emailValue || !emailPattern.test(emailValue)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Se tudo estiver válido, permite o envio
+            if (isValid) {
+                formError.style.display = 'none';
+                return true;
+            } else {
+                formError.style.display = 'block';
+                return false;
+            }
+        }
+
+        // Validação no envio do formulário
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão
+
+            if (validateForm()) {
+                window.location.href = "/privatetrade/verificacao"; // Redireciona após a validação
+            }
+        });
+    </script>
+</body>
+</html>
