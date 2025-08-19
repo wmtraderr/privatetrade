@@ -16,6 +16,7 @@
       align-items: center;
       min-height: 100vh; /* Garante que o conteúdo ocupe a altura inteira da tela */
       flex-direction: column;
+      position: relative;
     }
 
     .container {
@@ -26,6 +27,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
       box-sizing: border-box;
+      margin-bottom: 70px; /* Espaço para o botão fixo no rodapé */
     }
 
     h1 {
@@ -51,21 +53,41 @@
     }
 
     .button {
-      width: 100%;
-      padding: 15px;
+      width: 80%; /* Largura do botão ajustada para 80% */
+      padding: 15px; /* Altura do botão restaurada */
       background: #00ff00;
       border: none;
-      font-size: 18px;
+      font-size: 16px; /* Tamanho da fonte */
       font-weight: bold;
       color: #0a1321;
       border-radius: 8px;
       cursor: pointer;
       transition: 0.3s ease;
-      margin-top: 20px;
+      box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Efeito de borda brilhante */
+      margin: 0 auto; /* Centraliza o botão */
+      display: block; /* Faz o botão ficar em bloco e centralizado */
     }
 
     .button:hover {
       background-color: #00cc00;
+      box-shadow: 0 0 20px #00cc00, 0 0 40px #00cc00; /* Aumenta o brilho no hover */
+    }
+
+    /* Efeito piscando */
+    .button:active {
+      animation: blink 0.5s infinite; /* Adiciona o efeito de piscar quando o botão é pressionado */
+    }
+
+    @keyframes blink {
+      0% {
+        box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+      }
+      50% {
+        box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+      }
+      100% {
+        box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+      }
     }
 
     .status {
@@ -96,11 +118,11 @@
       border-radius: 8px;
     }
 
-    /* Estilo para o iframe com proporção 1:1 */
+    /* Ajustando o vídeo para proporção 9:16 */
     .video-container {
       position: relative;
       width: 100%;
-      padding-top: 100%; /* Proporção 1:1 (altura = largura) */
+      padding-top: 177.77%; /* Proporção 9:16 (altura = 9/16 * largura) */
       margin-bottom: 20px;
       background-color: #000;
       border-radius: 10px;
@@ -117,6 +139,30 @@
       height: 100%;
     }
 
+    /* Fixando o botão no rodapé */
+    .footer-button {
+      position: fixed;
+      bottom: 0;
+      width: 80%; /* Largura do botão ajustada para 80% */
+      padding: 15px; /* Altura do botão restaurada */
+      background: #00ff00;
+      border: none;
+      font-size: 16px; /* Tamanho da fonte */
+      font-weight: bold;
+      color: #0a1321;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Efeito de borda brilhante */
+      margin: 0 auto; /* Centraliza o botão */
+      display: block; /* Faz o botão ficar em bloco e centralizado */
+    }
+
+    .footer-button:hover {
+      background-color: #00cc00;
+      box-shadow: 0 0 20px #00cc00, 0 0 40px #00cc00; /* Aumenta o brilho no hover */
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 15px;
@@ -131,7 +177,7 @@
       }
 
       .button {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   </style>
@@ -143,19 +189,18 @@
     <div class="status">
       <h3>Desenvolvido com a mais avançada tecnologia em inteligência artificial e utilizando o poder do ChatGPT-5, nossa plataforma proporciona previsões de alta precisão.<br><br> Elaborada por traders profissionais, alcançamos uma taxa de assertividade de 96%, garantindo resultados consistentes e confiáveis para análises detalhadas de mercado.</h3>
     </div>
-    <!-- Adicionando o iframe para o vídeo com proporção 1:1 -->
+    <!-- Adicionando o iframe para o vídeo com proporção 9:16 -->
     <div class="video-container">
-      <iframe width="315" height="560" 
-  src="https://www.dailymotion.com/embed/video/x9p25v8" 
-  title="Dailymotion video player" frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-  gyroscope; picture-in-picture;
-  web-share" 
-  allowfullscreen></iframe>
-
-
+      <iframe src="https://www.dailymotion.com/embed/video/x9p25v8" 
+        title="Dailymotion video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+        gyroscope; picture-in-picture;
+        web-share" 
+        allowfullscreen></iframe>
     </div>
-    <button class="button" onclick="window.location.href='/privatetrade/formulario'">QUERO ACESSO GRATUITO!</button>
   </div>
+
+  <!-- Botão fixo no rodapé -->
+  <button class="footer-button" onclick="window.location.href='/privatetrade/formulario'">QUERO ACESSO GRATUITO!</button>
 </body>
 </html>
